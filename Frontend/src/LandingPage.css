@@ -1,0 +1,72 @@
+/* LandingPage.css */
+
+:root {
+    --bg-gradient: radial-gradient(circle at center, #1e2a38 0%, #12181f 100%);
+    --primary-accent: #00bfff;
+    --txt-light: #d1d1d1;
+  }
+  
+  .landing {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-gradient);
+    color: #f1f1f1;
+    min-height: 100vh;      /* lets browser handle mobile URL‐bar quirks */
+    width: 100%;
+    padding: 2rem 1rem;     /* comfy breathing room */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .landing-content {
+    width: 100%;
+    max-width: 800px;       /* still narrow on small screens */
+    text-align: center;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+  
+  .landing h1 {
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    font-weight: 600;
+    margin: 0 0 1rem;
+    line-height: 1.2;
+  }
+  
+  .landing p {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--txt-light);
+    margin: 0 0 1.5rem;
+    line-height: 1.5;
+  }
+  
+  .landing a {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    font-weight: 500;
+    text-decoration: none;
+    background: var(--primary-accent);
+    color: #12181f;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,191,255,0.3);
+    transition: transform 0.2s;
+  }
+  
+  .landing a:hover {
+    transform: scale(1.05);
+  }
+  
+  /* DESKTOP / LARGE SCREENS */
+  @media (min-width: 1024px) {
+    .landing-content {
+      max-width: 1200px;      /* open up wider */
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+    }
+    /* if you ever want an illustration on the right, give it flex:1 too */
+  }
+  
