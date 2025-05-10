@@ -1,24 +1,8 @@
 # ML‑CR‑PROJECT
 
-**Interactive Web‑based Character Recognition with User Feedback**
+**Feedback-Oriented Character Recognition Web Application**
 
 A full‑stack application where users draw handwritten characters in the browser, receive predictions from three models (CNN, RNN, Logistic Regression), and submit corrections for future retraining.
-
----
-
-## Table of Contents
-
-1. [Features](#features)  
-2. [Prerequisites](#prerequisites)  
-3. [Installation](#installation)  
-4. [Usage](#usage)  
-5. [File Structure](#file-structure)  
-6. [Model Files](#model-files)  
-7. [Results Logging](#results-logging)  
-8. [Contributing](#contributing)  
-9. [License](#license)  
-
----
 
 ## Features
 
