@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useRef, useState, useEffect } from 'react';
 import './App.css';
 
@@ -14,9 +13,9 @@ function Draw() {
   const [lastPos,   setLastPos]     = useState({ x: 0, y: 0 });
   const [endpoint,  setEndpoint]    = useState('cnninfer');
 
-  const [showModal, setShowModal]           = useState(false);
+  const [showModal, setShowModal]         = useState(false);
   const [predictedLabel, setPredictedLabel] = useState('');
-  const [imgName, setImgName]               = useState('');
+  const [imgName, setImgName]             = useState('');
 
   /* ------------ initialise 280×280 black canvas ------------ */
   useEffect(() => {
@@ -63,32 +62,32 @@ function Draw() {
 
   /* ------------  down‑sample, orient & infer  ------------ */
   const infer = async () => {
-    // 1. shrink 280×280 → 28×28
+    /** 1. shrink 280×280 → 28×28 */
     const small = smallCanvasRef.current;
     small.width = 28; small.height = 28;
-    const sctx = small.getContext('2d');
+    const sctx  = small.getContext('2d');
     sctx.fillStyle = 'black';
     sctx.fillRect(0, 0, 28, 28);
     sctx.drawImage(bigCanvasRef.current, 0, 0, 28, 28);
 
-    // 2. RGBA → float32 stroke=1, bg=0
-    const rgba = sctx.getImageData(0, 0, 28, 28).data;
-    const tmp = new Float32Array(28 * 28);
+    /** 2. RGBA → float32 stroke=1, bg=0  (NO inversion now) */
+    const rgba  = sctx.getImageData(0, 0, 28, 28).data;
+    const tmp   = new Float32Array(28 * 28);
     for (let i = 0, j = 0; i < rgba.length; i += 4, ++j) {
-      tmp[j] = rgba[i] / 255;
+      tmp[j] = rgba[i] / 255;             // white ink → 1  ✓
     }
 
-    // 3. transpose + horizontal flip (EMNIST orientation)
+    /** 3. transpose + horizontal flip (EMNIST orientation) */
     const pixels = new Float32Array(28 * 28);
     for (let y = 0; y < 28; y++) {
       for (let x = 0; x < 28; x++) {
-        const src = y * 28 + x;
-        const dst = x * 28 + (27 - y);
+        const src = y * 28 + x;           // original index
+        const dst = x * 28 + (27 - y);    // after transpose+flip
         pixels[dst] = tmp[src];
       }
     }
 
-    // 4. send to backend
+    /** 4. send to backend */
     try {
       const res = await fetch(`${API_BASE}/${endpoint}`, {
         method: 'POST',
@@ -132,8 +131,8 @@ function Draw() {
         <label htmlFor="model-select" style={{ marginRight:'0.5rem' }}>Model:</label>
         <select id="model-select" value={endpoint} onChange={e => setEndpoint(e.target.value)}>
           <option value="cnninfer">CNN</option>
-          <option value="rnninfer">RNN</option>
-          <option value="lrinfer">Logistic Regression</option>
+          <option value="mlpinfer">MLP</option>
+          <option value="lorinfer">Logistic Regression</option>
         </select>
       </div>
 
