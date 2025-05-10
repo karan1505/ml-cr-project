@@ -1,0 +1,3 @@
+img_name,model_used,result_inferred,user_feedback
+raw-img-1.png,rnn,L or I?,incorrect
+raw-img-2.png,lr,30,incorrect

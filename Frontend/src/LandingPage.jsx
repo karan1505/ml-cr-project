@@ -18,13 +18,14 @@ function LandingPage() {
       backgroundImage: 'radial-gradient(circle, rgba(26,32,44,1) 0%, rgba(0,0,0,1) 100%)', // Gradient background
     }}>
       <h1 style={{
-        fontSize: 'clamp(2.5rem, 6vw, 4rem)', // Responsive font size
+        fontSize: 'clamp(1.5rem, 3vw, 5rem)', // Responsive font size
         marginBottom: '1.5rem',
         lineHeight: 1.1,
         fontWeight: 700,      // Bold font
         textAlign: 'center',
       }}>
-        EMNIST Character Recognition
+        CS 412 - Introduction to ML
+        Project: EMNIST Character Recognition
       </h1>
       <p style={{
         fontSize: 'clamp(1.1rem, 3vw, 1.3rem)',
@@ -34,7 +35,7 @@ function LandingPage() {
         marginBottom: '2rem',
         lineHeight: 1.6,          // Improved line height for readability
       }}>
-        Unleash the power of machine learning to recognize your handwritten characters. Simply draw letters or digits, and our intelligent model, trained on the extensive EMNIST dataset, will instantly provide its prediction. Experience the magic of AI in your browser!
+        Click Start Drawing to begin
       </p>
       <a
         href="/draw"
